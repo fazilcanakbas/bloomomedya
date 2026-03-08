@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-poppins);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-poppins), sans-serif;
+}
+
+/* Sizi Arayalım button style */
+.sizi-arayalim-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Bizi Arayın button fill animation */
+.bizi-arayin-btn {
+  position: relative;
+  overflow: hidden;
+  color: #000;
+}
+
+.bizi-arayin-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: #C0FF10;
+  z-index: 1;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  mix-blend-mode: multiply;
+}
+
+.bizi-arayin-btn:hover::before {
+  width: 100%;
+}
+
+.bizi-arayin-btn > span,
+.bizi-arayin-btn > svg {
+  position: relative;
+  z-index: 2;
+  transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bizi-arayin-btn:hover > span,
+.bizi-arayin-btn:hover > svg {
+  color: #000 !important;
+}
+
+/* Hero Spline — top center, bottom half visible */
+.hero-spline {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -18vh;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-spline iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  transform: scale(1.9);
+  transform-origin: center center;
+}
+
+/* Hero brand logos gradient glow */
+.hero-brand-glow {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(8, 153, 190, 0.6) 0%, rgba(8, 153, 190, 0.2) 50%, transparent 80%);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+/* Hide scrollbar for references carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
