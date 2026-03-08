@@ -56,15 +56,15 @@ body {
   width: 100%;
 }
 
-.bizi-arayin-btn > span,
-.bizi-arayin-btn > svg {
+.bizi-arayin-btn>span,
+.bizi-arayin-btn>svg {
   position: relative;
   z-index: 2;
   transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.bizi-arayin-btn:hover > span,
-.bizi-arayin-btn:hover > svg {
+.bizi-arayin-btn:hover>span,
+.bizi-arayin-btn:hover>svg {
   color: #000 !important;
 }
 
@@ -78,6 +78,7 @@ body {
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
+  z-index: -1;
 }
 
 .hero-spline iframe {
@@ -106,6 +107,7 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }

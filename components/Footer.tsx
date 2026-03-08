@@ -68,7 +68,7 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link href="/">
               <Image
-                src="/bloomo.png"
+                src="/bloomo-logo.png"
                 alt="Bloomo"
                 width={160}
                 height={40}

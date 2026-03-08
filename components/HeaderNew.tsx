@@ -39,12 +39,11 @@ export default function HeaderNew() {
         {/* Left — Full logo (fades out on scroll) */}
         <Link
           href="/"
-          className={`shrink-0 flex items-center transition-all duration-500 ${
-            scrolled ? "opacity-0 scale-90" : "opacity-100 scale-100"
-          }`}
+          className={`shrink-0 flex items-center transition-all duration-500 ${scrolled ? "opacity-0 scale-90" : "opacity-100 scale-100"
+            }`}
         >
           <Image
-            src="/bloomo.png"
+            src="/bloomo-logo-2.png"
             alt="Bloomo"
             width={160}
             height={40}
@@ -54,20 +53,18 @@ export default function HeaderNew() {
 
         {/* Center — Nav pill (shrinks into pill on scroll) */}
         <div
-          className={`hidden lg:flex items-center transition-all duration-500 ${
-            scrolled
+          className={`hidden lg:flex items-center transition-all duration-500 ${scrolled
               ? "gap-5 rounded-full border border-white/20 bg-black/60 px-4 py-2.5 shadow-2xl backdrop-blur-xl"
               : "gap-8"
-          }`}
+            }`}
         >
           {/* Icon logo inside pill (only when scrolled) */}
           <Link
             href="/"
-            className={`shrink-0 transition-all duration-500 ${
-              scrolled
+            className={`shrink-0 transition-all duration-500 ${scrolled
                 ? "opacity-100 scale-100 w-7"
                 : "opacity-0 scale-0 w-0 overflow-hidden"
-            }`}
+              }`}
           >
             <Image
               src="/bloomo-2.png"
@@ -83,11 +80,10 @@ export default function HeaderNew() {
               <Link
                 key={link.label}
                 href={link.href}
-                className={`group flex items-center gap-1 font-medium transition-all duration-300 ${
-                  scrolled
+                className={`group flex items-center gap-1 font-medium transition-all duration-300 ${scrolled
                     ? "text-sm text-white/80 hover:text-white"
-                    : "text-base text-white/80 hover:text-white"
-                }`}
+                    : "text-base text-[#BCBCBC] hover:text-black"
+                  }`}
               >
                 {link.label}
                 {link.hasDropdown && (
@@ -114,11 +110,10 @@ export default function HeaderNew() {
           {/* Arrow button inside pill (only when scrolled) */}
           <Link
             href="#"
-            className={`flex items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition-all duration-500 hover:bg-white/20 ${
-              scrolled
+            className={`flex items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition-all duration-500 hover:bg-white/20 ${scrolled
                 ? "size-8 opacity-100 scale-100"
                 : "size-0 opacity-0 scale-0 border-0 p-0 overflow-hidden"
-            }`}
+              }`}
           >
             <svg
               width="14"
@@ -138,12 +133,10 @@ export default function HeaderNew() {
         {/* Right — CTA Button (fades out on scroll) */}
         <Link
           href="#"
-          className={`hidden lg:flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-500 hover:bg-white/10 ${
-            scrolled
-              ? "opacity-0 scale-90 pointer-events-none"
-              : "opacity-100 scale-100"
-          }`}
-          style={{ borderColor: "silver" }}
+          className={`hidden lg:flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition-all duration-500 ${scrolled
+              ? "opacity-0 scale-90 pointer-events-none text-white border-white/30"
+              : "opacity-100 scale-100 text-gray-800 border-gray-300 hover:bg-gray-50"
+            }`}
         >
           Hemen Teklif Alın
           <svg
@@ -162,7 +155,7 @@ export default function HeaderNew() {
 
         {/* Mobile Menu Button */}
         <button
-          className="flex size-10 items-center justify-center text-white lg:hidden"
+          className={`flex size-10 items-center justify-center lg:hidden transition-colors ${scrolled ? "text-white" : "text-gray-800"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menü"
         >
