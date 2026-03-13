@@ -103,6 +103,7 @@ export default function References() {
 
   return (
     <section
+      id="references-section"
       ref={sectionRef}
       className="relative w-full bg-white"
       style={{ height: sectionHeight }}

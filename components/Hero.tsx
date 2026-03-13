@@ -2,11 +2,11 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative z-0 w-full bg-[linear-gradient(180deg,#e0f2fe_0%,#eef2ff_50%,#f3f0ff_100%)] overflow-hidden flex flex-col items-center pt-60">
+    <section className="relative w-full bg-[linear-gradient(180deg,#e0f2fe_0%,#eef2ff_50%,#f3f0ff_100%)] overflow-hidden flex flex-col items-center pt-60">
       {/* Spline 3D — positioned at top center, half visible */}
       <div className="hero-spline">
         <iframe
-          src="https://my.spline.design/wwdc24landingpagedesign-xFIqkQaqNsTNTelIo4MCJzuu/"
+          src="https://my.spline.design/chips-90DFOkXurkfIu7OMtSMXpIot/"
           frameBorder="0"
           width="100%"
           height="100%"
@@ -14,7 +14,7 @@ export default function Hero() {
       </div>
 
       {/* Hero content — centered vertically */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4">
+      <div className="relative z-20 flex flex-col items-center text-center px-4">
         <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-gray-900 leading-tight">
           Çözüm, işletmenizi anlamakla başlar;
           <br />

@@ -1,18 +1,21 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
   { label: "Hakkımızda", href: "/hakkimizda" },
-  { label: "Hizmetlerimiz", href: "#", hasDropdown: true },
-  { label: "Projelerimiz", href: "/projeler" },
+  { label: "Hizmetlerimiz", href: "/hizmetlerimiz", hasDropdown: true },
+  { label: "Referanslar", href: "/fiyatlandirma" },
   { label: "Blog", href: "#" },
   { label: "İletişim", href: "/iletisim" },
 ];
 
 export default function HeaderNew() {
+  const pathname = usePathname();
+  const isDark = pathname === "/fiyatlandirma";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -34,7 +37,7 @@ export default function HeaderNew() {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 z-50 w-full transition-all duration-500 ${hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}>
+    <header className={`fixed top-0 left-0 z-[999] w-full transition-all duration-500 ${hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}>
       <div className="mx-auto flex h-20 w-full max-w-[1440px] items-center justify-between px-4 sm:px-6 xl:px-32">
         {/* Left — Full logo (fades out on scroll) */}
         <Link
@@ -43,7 +46,7 @@ export default function HeaderNew() {
             }`}
         >
           <Image
-            src="/bloomo-logo-2.png"
+            src={isDark ? "/bloomo-logo.png" : "/bloomo-logo-2.png"}
             alt="Bloomo"
             width={160}
             height={40}
@@ -54,16 +57,16 @@ export default function HeaderNew() {
         {/* Center — Nav pill (shrinks into pill on scroll) */}
         <div
           className={`hidden lg:flex items-center transition-all duration-500 ${scrolled
-              ? "gap-5 rounded-full border border-white/20 bg-black/60 px-4 py-2.5 shadow-2xl backdrop-blur-xl"
-              : "gap-8"
+            ? "gap-5 rounded-full border border-white/20 bg-black/60 px-4 py-2.5 shadow-2xl backdrop-blur-xl"
+            : "gap-8"
             }`}
         >
           {/* Icon logo inside pill (only when scrolled) */}
           <Link
             href="/"
             className={`shrink-0 transition-all duration-500 ${scrolled
-                ? "opacity-100 scale-100 w-7"
-                : "opacity-0 scale-0 w-0 overflow-hidden"
+              ? "opacity-100 scale-100 w-7"
+              : "opacity-0 scale-0 w-0 overflow-hidden"
               }`}
           >
             <Image
@@ -81,8 +84,10 @@ export default function HeaderNew() {
                 key={link.label}
                 href={link.href}
                 className={`group flex items-center gap-1 font-medium transition-all duration-300 ${scrolled
-                    ? "text-sm text-white/80 hover:text-white"
-                    : "text-base text-[#BCBCBC] hover:text-black"
+                  ? "text-sm text-white/80 hover:text-white"
+                  : isDark
+                    ? "text-base text-white/80 hover:text-white"
+                    : "text-base text-[#021f21] hover:text-black"
                   }`}
               >
                 {link.label}
@@ -111,8 +116,8 @@ export default function HeaderNew() {
           <Link
             href="#"
             className={`flex items-center justify-center rounded-full border border-white/30 bg-white/10 text-white transition-all duration-500 hover:bg-white/20 ${scrolled
-                ? "size-8 opacity-100 scale-100"
-                : "size-0 opacity-0 scale-0 border-0 p-0 overflow-hidden"
+              ? "size-8 opacity-100 scale-100"
+              : "size-0 opacity-0 scale-0 border-0 p-0 overflow-hidden"
               }`}
           >
             <svg
@@ -134,7 +139,9 @@ export default function HeaderNew() {
         <Link
           href="#"
           className={`hidden lg:flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition-all duration-500 ${scrolled
-              ? "opacity-0 scale-90 pointer-events-none text-white border-white/30"
+            ? "opacity-0 scale-90 pointer-events-none text-white border-white/30"
+            : isDark
+              ? "opacity-100 scale-100 text-white border-white/30 hover:bg-white/10"
               : "opacity-100 scale-100 text-gray-800 border-gray-300 hover:bg-gray-50"
             }`}
         >
@@ -155,7 +162,7 @@ export default function HeaderNew() {
 
         {/* Mobile Menu Button */}
         <button
-          className={`flex size-10 items-center justify-center lg:hidden transition-colors ${scrolled ? "text-white" : "text-gray-800"}`}
+          className={`flex size-10 items-center justify-center lg:hidden transition-colors ${scrolled || isDark ? "text-white" : "text-gray-800"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Menü"
         >

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -78,7 +82,7 @@ body {
   height: 100vh;
   pointer-events: none;
   overflow: hidden;
-  z-index: -1;
+  z-index: 10;
 }
 
 .hero-spline iframe {
