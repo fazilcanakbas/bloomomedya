@@ -45,8 +45,8 @@ export default function Hero() {
         {/* Manset image */}
         <div className="mt-10">
           <Image
-            src="/manset-bg.webp"
-            alt="Manset"
+            src="/man.webp"
+            alt=""
             width={1200}
             height={600}
             className="h-auto block"

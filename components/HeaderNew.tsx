@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "Hizmetlerimiz", href: "/hizmetlerimiz", hasDropdown: true },
   { label: "Referanslar", href: "/referanslar" },
-  { label: "Blog", href: "#" },
+  { label: "Blog", href: "/blog" },
   { label: "İletişim", href: "/iletisim" },
 ];
 

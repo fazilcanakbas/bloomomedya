@@ -97,9 +97,9 @@ const values = [
 
 const team = [
   {
-    name: "Fazıl Can Akbaş",
-    role: "CTO",
-    image: "/fazilcan.jpg",
+    name: "Sinan Tekin",
+    role: "CEO / Kurucu",
+    image: "/bloomo-2.png",
   },
   {
     name: "Elif Demir",
