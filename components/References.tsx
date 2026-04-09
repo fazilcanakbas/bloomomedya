@@ -60,7 +60,15 @@ const references: {
   },
 ];
 
-export default function References() {
+type ReferencesProps = {
+  sectionId?: string;
+  showHeader?: boolean;
+};
+
+export default function References({
+  sectionId = "references-section",
+  showHeader = true,
+}: ReferencesProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const [scrollWidth, setScrollWidth] = useState(0);
@@ -103,13 +111,14 @@ export default function References() {
 
   return (
     <section
-      id="references-section"
+      id={sectionId}
       ref={sectionRef}
       className="relative w-full bg-white"
       style={{ height: sectionHeight }}
     >
       {/* Header — normal flow, scrolls away */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 pt-20 sm:px-6 lg:pt-28 xl:px-32">
+      {showHeader && (
+        <div className="mx-auto w-full max-w-[1440px] px-4 pt-20 sm:px-6 lg:pt-28 xl:px-32">
         <p className="text-sm font-semibold text-black">REFERANSLARIMIZ</p>
         <h2
           className="mt-4 max-w-2xl text-3xl font-medium leading-tight text-black sm:text-4xl lg:text-5xl"
@@ -119,7 +128,8 @@ export default function References() {
           <br />
           Markalar
         </h2>
-      </div>
+        </div>
+      )}
 
       {/* Sticky cards — lock after header scrolls past */}
       <div className="sticky top-0 flex h-screen items-center pb-16">

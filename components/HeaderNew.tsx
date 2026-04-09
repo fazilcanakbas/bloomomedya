@@ -8,7 +8,7 @@ import Link from "next/link";
 const navLinks = [
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "Hizmetlerimiz", href: "/hizmetlerimiz", hasDropdown: true },
-  { label: "Referanslar", href: "/fiyatlandirma" },
+  { label: "Referanslar", href: "/referanslar" },
   { label: "Blog", href: "#" },
   { label: "İletişim", href: "/iletisim" },
 ];

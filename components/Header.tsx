@@ -7,7 +7,7 @@ import Link from "next/link";
 const navLinks = [
   { label: "Hakkımızda", href: "/hakkimizda" },
   { label: "Hizmetlerimiz", href: "#", hasDropdown: true },
-  { label: "Referanslar", href: "/projeler" },
+  { label: "Referanslar", href: "/referanslar" },
   { label: "Blog", href: "#" },
   { label: "İletişim", href: "/iletisim" },
 ];
