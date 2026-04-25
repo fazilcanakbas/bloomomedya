@@ -1,6 +1,7 @@
 const capabilities = [
   {
     title: "Google Ads",
+    href: "/hizmetlerimiz/dijital-reklam",
     description:
       "SEM, sosyal medya ve ötesinde ölçülebilir iş sonuçları üreten veri odaklı reklam stratejileri oluşturuyoruz.",
     icon: (
@@ -13,6 +14,7 @@ const capabilities = [
   },
   {
     title: "Meta Ads",
+    href: "/hizmetlerimiz/dijital-reklam",
     description:
       "Teknik denetimden içerik stratejisine kadar, sitenizin her alanını arama motorlarında sürdürülebilir büyüme için optimize ediyoruz.",
     icon: (
@@ -37,6 +39,7 @@ const capabilities = [
   },
   {
     title: "Web Analitik",
+    href: "/hizmetlerimiz/web-tasarim-ve-gelistirme",
     description:
       "Önemli olanı takip edin, gürültüyü görmezden gelin. Web sitenizin verisini net ve eyleme geçirilebilir içgörülere dönüştüren özel panolar kuruyoruz.",
     icon: (
@@ -47,6 +50,7 @@ const capabilities = [
   },
   {
     title: "Arama Motoru Optimizasyonu (SEO)",
+    href: "/hizmetlerimiz/seo-ve-organik-buyume",
     description:
       "Teknik denetimden içerik stratejisine kadar, sitenizin her alanını arama motorlarında sürdürülebilir büyüme için optimize ediyoruz.",
     icon: (
@@ -82,7 +86,7 @@ export default function Capabilities() {
 
         {/* CTA Button */}
         <a
-          href="#"
+          href="/hizmetlerimiz"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-gray-800"
           style={{ fontFamily: "var(--font-syne)" }}
         >
@@ -125,7 +129,7 @@ export default function Capabilities() {
 
               {/* Learn more */}
               <a
-                href="#"
+                href={cap.href}
                 className="mt-6 inline-flex flex-col self-start text-sm font-bold  text-gray-800"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
