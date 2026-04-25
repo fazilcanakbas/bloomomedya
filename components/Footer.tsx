@@ -99,7 +99,6 @@ export default function Footer() {
         <div className="h-px bg-white/10" />
       </div>
 
-      {/* Main Footer */}
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 xl:px-32">
         <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12">
           {/* Logo & Description */}
