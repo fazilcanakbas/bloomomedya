@@ -90,8 +90,11 @@ export default function HizmetlerimizPage() {
       >
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 xl:px-32">
           <div className="text-center">
-            <p className="text-sm font-semibold tracking-[0.16em] text-[#0899BE]">
-              Hizmet Alanları
+            <p
+              className="text-sm font-semibold tracking-wider text-[#0899BE]"
+              style={{ fontFamily: "var(--font-syne)" }}
+            >
+              HİZMET ALANLARI
             </p>
             <h2
               className="mt-4 text-3xl font-medium leading-tight text-black sm:text-4xl lg:text-5xl"
@@ -112,7 +115,7 @@ export default function HizmetlerimizPage() {
             {services.map((service) => (
               <article
                 key={service.slug}
-                className="group rounded-[30px] border border-gray-200 bg-white p-8 transition-shadow hover:shadow-lg"
+                className="group flex flex-col rounded-[30px] border border-gray-200 bg-white p-8 transition-shadow hover:shadow-lg"
               >
                 <div className="flex items-start justify-between gap-5">
                   <h3
@@ -143,7 +146,7 @@ export default function HizmetlerimizPage() {
 
                 <ul className="mt-6 grid gap-2">
                   {service.features.slice(0, 3).map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-gray-700">
+                    <li key={feature.title} className="flex items-start gap-2 text-sm text-gray-700">
                       <svg
                         width="16"
                         height="16"
@@ -155,74 +158,115 @@ export default function HizmetlerimizPage() {
                       >
                         <path d="M20 6 9 17l-5-5" />
                       </svg>
-                      {feature}
+                      {feature.title}
                     </li>
                   ))}
                 </ul>
 
-                <Link
-                  href={`/hizmetlerimiz/${service.slug}`}
-                  className="mt-7 inline-flex flex-col text-sm font-semibold text-[#066d86]"
-                >
-                  <span className="inline-flex items-center gap-2">
-                    Detayı İncele
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
-                  </span>
-                  <span className="mt-1 h-[2px] w-full bg-[#066d86]" />
-                </Link>
+                <div className="mt-auto pt-7">
+                  <Link
+                    href={`/hizmetlerimiz/${service.slug}`}
+                    className="group/btn inline-flex items-center gap-3 rounded-full bg-black py-1.5 pl-6 pr-1.5 text-sm font-semibold tracking-wider text-white transition-colors hover:bg-[#0899BE]"
+                    style={{ fontFamily: "var(--font-syne)" }}
+                  >
+                    Detaylı İncele
+                    <span className="flex size-9 items-center justify-center rounded-full bg-white/10 transition-colors group-hover/btn:bg-white">
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="text-white transition-colors group-hover/btn:text-black"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </span>
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-white py-20 lg:py-28">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 xl:px-32">
-          <div className="relative overflow-hidden rounded-[36px] bg-[#0b0f14] px-8 py-14 sm:px-12 sm:py-16 lg:px-16">
-            <div className="pointer-events-none absolute -left-24 top-10 h-56 w-56 rounded-full bg-[#0899BE]/25 blur-[90px]" />
-            <div className="pointer-events-none absolute -right-24 bottom-0 h-64 w-64 rounded-full bg-[#3d72ff]/20 blur-[120px]" />
+      <section className="w-full bg-white pb-20 pt-10 lg:pb-28">
+        <div className="w-full p-8">
+          <svg
+            viewBox="0 0 1440 80"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="
+                M0 50
+                L900 50
+                C940 50 940 20 980 20
+                L1080 20
+                C1120 20 1120 50 1160 50
+                L1440 50
+              "
+              stroke="#d1d5db"
+              strokeWidth="1"
+              fill="none"
+            />
+          </svg>
+        </div>
 
-            <div className="relative z-10">
-              <div className="max-w-2xl">
-                <p className="text-sm font-semibold tracking-[0.16em] text-[#8fd4e6]">
-                  Çalışma Modeli
-                </p>
-                <h2
-                  className="mt-4 text-3xl font-medium leading-tight text-white sm:text-4xl lg:text-5xl"
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 xl:px-32">
+          <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+            <div className="lg:max-w-xl">
+              <p
+                className="text-sm font-bold tracking-wider text-black"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                ÇALIŞMA MODELİ
+              </p>
+              <h2
+                className="mt-4 text-3xl font-medium leading-tight text-black sm:text-4xl lg:text-5xl"
+                style={{ fontFamily: "var(--font-syne)" }}
+              >
+                Her hizmet aynı
+                <br />
+                operasyon omurgasında
+                <br />
+                ilerler
+              </h2>
+            </div>
+            <div className="lg:max-w-md lg:pt-8">
+              <p className="text-base leading-relaxed text-gray-600 lg:text-lg">
+                Hangi hizmeti seçerseniz seçin, aynı netlikte bir süreç
+                işletiyoruz. Keşiften optimizasyona kadar her adımı birlikte
+                planlıyor, şeffaf bir akışla ilerliyoruz.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <article
+                key={step.title}
+                className="relative rounded-2xl border border-gray-200 bg-white p-8 transition-shadow hover:shadow-lg"
+              >
+                <span
+                  className="text-5xl font-medium text-[#0899BE]/30"
                   style={{ fontFamily: "var(--font-syne)" }}
                 >
-                  Her hizmet aynı operasyon
-                  <br />
-                  omurgasında ilerler
-                </h2>
-              </div>
-
-              <div className="mt-12 grid gap-4 lg:grid-cols-4">
-                {processSteps.map((step, index) => (
-                  <article
-                    key={step.title}
-                    className="rounded-2xl border border-white/15 bg-white/[0.03] p-6"
-                  >
-                    <p className="text-xs font-semibold tracking-[0.14em] text-white/40">
-                      Adım 0{index + 1}
-                    </p>
-                    <h3 className="mt-3 text-lg font-semibold text-white">{step.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/70">{step.text}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-black">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-gray-500">
+                  {step.text}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </section>

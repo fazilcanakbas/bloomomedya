@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { services } from "@/app/hizmetlerimiz/services";
 
 const navLinks = [
   { label: "Hakkımızda", href: "/hakkimizda" },
@@ -79,37 +80,103 @@ export default function HeaderNew() {
           </Link>
 
           <nav className="flex items-center gap-inherit" style={{ gap: "inherit" }}>
-            {navLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className={`group flex items-center gap-1 font-medium transition-all duration-300 ${scrolled
-                  ? "text-sm text-white/80 hover:text-white"
-                  : isDark
-                    ? "text-base text-white/80 hover:text-white"
-                    : "text-base text-[#021f21] hover:text-black"
-                  }`}
-              >
-                {link.label}
-                {link.hasDropdown && (
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 12 12"
-                    fill="none"
-                    className="mt-0.5 transition-transform group-hover:rotate-180"
+            {navLinks.map((link) =>
+              link.hasDropdown ? (
+                <div key={link.label} className="group relative">
+                  <Link
+                    href={link.href}
+                    className={`flex items-center gap-1 font-medium transition-all duration-300 ${scrolled
+                      ? "text-sm text-white/80 hover:text-white"
+                      : isDark
+                        ? "text-base text-white/80 hover:text-white"
+                        : "text-base text-[#021f21] hover:text-black"
+                      }`}
                   >
-                    <path
-                      d="M3 4.5L6 7.5L9 4.5"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                )}
-              </Link>
-            ))}
+                    {link.label}
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      className="mt-0.5 transition-transform group-hover:rotate-180"
+                    >
+                      <path
+                        d="M3 4.5L6 7.5L9 4.5"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Link>
+
+                  {/* Dropdown */}
+                  <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-4 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="w-[560px] overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl">
+                      <div className="grid grid-cols-2 gap-1 p-3">
+                        {services.map((service) => (
+                          <Link
+                            key={service.slug}
+                            href={`/hizmetlerimiz/${service.slug}`}
+                            className="flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-[#E8F6FA]"
+                          >
+                            <div className="flex size-12 shrink-0 items-center justify-center rounded-lg bg-gray-50">
+                              <Image
+                                src={service.iconImage}
+                                alt=""
+                                width={40}
+                                height={40}
+                                className="h-10 w-10 object-contain"
+                                unoptimized
+                              />
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-sm font-semibold text-black">
+                                {service.title}
+                              </p>
+                              <p className="mt-0.5 line-clamp-2 text-xs leading-relaxed text-gray-500">
+                                {service.description}
+                              </p>
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                      {/* <Link
+                        href="/hizmetlerimiz"
+                        className="flex items-center justify-between border-t border-gray-100 bg-gray-50 px-5 py-3 text-sm font-semibold text-black transition-colors hover:bg-gray-100"
+                      >
+                        <span>Tüm hizmetleri keşfet</span>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                      </Link> */}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className={`group flex items-center gap-1 font-medium transition-all duration-300 ${scrolled
+                    ? "text-sm text-white/80 hover:text-white"
+                    : isDark
+                      ? "text-base text-white/80 hover:text-white"
+                      : "text-base text-[#021f21] hover:text-black"
+                    }`}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           {/* Arrow button inside pill (only when scrolled) */}

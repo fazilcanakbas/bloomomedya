@@ -26,19 +26,42 @@ export default function Hero() {
 
         {/* Brand logos */}
         <div className="relative mt-12 w-full">
-          <div className="flex items-center justify-center gap-12 sm:gap-20 px-4">
+          <div className="flex flex-wrap items-center justify-center gap-10 sm:gap-16 px-4">
             <Image
               src="/havacilar-logo.png"
-              alt="Havacilar Logo"
+              alt="Havacilar"
               width={140}
               height={44}
               className="h-auto w-[120px] object-contain invert sm:w-[140px]"
             />
-            <span className="text-lg font-semibold uppercase tracking-widest text-white/60 sm:text-xl">Logo 2</span>
-            <span className="text-lg font-semibold uppercase tracking-widest text-white/60 sm:text-xl">Logo 3</span>
-            <span className="text-lg font-semibold uppercase tracking-widest text-white/60 sm:text-xl">Logo 4</span>
-            <span className="text-lg font-semibold uppercase tracking-widest text-white/60 sm:text-xl">Logo 5</span>
-            <span className="text-lg font-semibold uppercase tracking-widest text-white/60 sm:text-xl">Logo 6</span>
+            <Image
+              src="/efour.png"
+              alt="Efour"
+              width={140}
+              height={44}
+              className="h-auto w-[110px] object-contain sm:w-[130px]"
+            />
+            <Image
+              src="/lullykids.png"
+              alt="Lullykids"
+              width={140}
+              height={44}
+              className="h-auto w-[110px] object-contain sm:w-[130px]"
+            />
+            <Image
+              src="/daimatour.png"
+              alt="Daimatour"
+              width={140}
+              height={44}
+              className="h-auto w-[110px] object-contain sm:w-[130px]"
+            />
+            <Image
+              src="/peynir.png"
+              alt="Peynir"
+              width={140}
+              height={44}
+              className="h-auto w-[110px] object-contain sm:w-[130px]"
+            />
           </div>
         </div>
 

@@ -102,19 +102,14 @@ const team = [
     image: "/bloomo-2.png",
   },
   {
-    name: "Elif Demir",
-    role: "Kreatif Direktör",
-    image: "/digi-robot.png",
+    name: "Fazıl Can Akbaş",
+    role: "Full Stack Developer",
+    image: "/bloomo-2.png",
   },
   {
-    name: "Can Özkan",
-    role: "Full-Stack Geliştirici",
-    image: "/digi-robot.png",
-  },
-  {
-    name: "Selin Kara",
-    role: "UI/UX Tasarımcı",
-    image: "/digi-robot.png",
+    name: "Gürkan Yavuz",
+    role: "Sosyal Medya Uzmanı",
+    image: "/bloomo-2.png",
   },
 ];
 
