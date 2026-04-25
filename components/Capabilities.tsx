@@ -86,7 +86,7 @@ export default function Capabilities() {
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-black px-6 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-colors hover:bg-gray-800"
           style={{ fontFamily: "var(--font-syne)" }}
         >
-          Tüm Hizmetleri Gör
+         TÜM HİZMETLERİ GÖR
           <svg
             width="16"
             height="16"
