@@ -10,7 +10,7 @@ export default function Hero() {
         playsInline
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source src="/blox.mp4" type="video/mp4" />
       </video>
 
       {/* Hero content — centered vertically */}
