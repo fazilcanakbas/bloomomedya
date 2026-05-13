@@ -72,7 +72,7 @@ export default function BlogPage() {
               href={`/blog/${featured.slug}`}
               className="group grid overflow-hidden rounded-[30px] border border-gray-200 bg-white transition-shadow hover:shadow-xl lg:grid-cols-2"
             >
-              {/* Image */}
+              
               <div className="relative h-64 overflow-hidden bg-[#F3F4F6] sm:h-80 lg:h-full lg:min-h-[420px]">
                 <Image
                   src={featured.coverImage}
