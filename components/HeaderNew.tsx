@@ -21,6 +21,8 @@ export default function HeaderNew() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
 
+  if (pathname.startsWith("/admin")) return null;
+
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -59,7 +61,7 @@ export default function HeaderNew() {
         <div
           className={`hidden lg:flex items-center transition-all duration-500 ${scrolled
             ? "gap-5 rounded-full border border-white/20 bg-black/60 px-4 py-2.5 shadow-2xl backdrop-blur-xl"
-            : "gap-8"
+            : "gap-8 rounded-full border border-transparent bg-transparent px-0 py-0 shadow-none backdrop-blur-none"
             }`}
         >
           {/* Icon logo inside pill (only when scrolled) */}
@@ -204,14 +206,14 @@ export default function HeaderNew() {
 
         {/* Right — CTA Button (fades out on scroll) */}
         <Link
-          href="#"
+          href="/iletisim"
           className={`hidden lg:flex items-center gap-2 rounded-full border px-5 py-2 text-sm font-semibold transition-all duration-500 ${scrolled
-            ? "opacity-0 scale-90 pointer-events-none text-white border-white/30"
+            ? "opacity-0 scale-90 pointer-events-none text-white border-black"
             : isDark
-              ? "opacity-100 scale-100 text-white border-white/30 hover:bg-white/10"
-              : "opacity-100 scale-100 text-gray-800 border-gray-300 hover:bg-gray-50"
+              ? "opacity-100 scale-100 text-white border-black hover:bg-white/10"
+              : "opacity-100 scale-100 text-gray-800 border-black hover:bg-gray-50"
             }`}
-        >
+        > 
           Hemen Teklif Alın
           <svg
             width="16"

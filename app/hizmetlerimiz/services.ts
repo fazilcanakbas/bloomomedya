@@ -56,7 +56,7 @@ export const services: Service[] = [
           "Sadece tıklama değil, gerçek satış ve form değerini gösteren atıf ve ROAS raporları hazırlıyoruz.",
       },
     ],
-    iconImage: "/reklam.png",
+    iconImage: "/reklam-22.png",
     detailIntro:
       "Reklam yatırımını sadece harcama değil, ölçülebilir büyüme motoru olarak ele alıyoruz.",
     detailParagraphs: [

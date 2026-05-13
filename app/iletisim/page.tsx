@@ -3,6 +3,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import SiziArayalimModal from "./SiziArayalimModal";
+import CustomDropdown from "@/components/CustomDropdown";
+import { supabase } from "@/lib/supabase";
 
 const contactInfo = [
   {
@@ -23,7 +25,6 @@ const contactInfo = [
     ),
     label: "Adres",
     value: "Antalya, Türkiye",
-    href: "#",
   },
   {
     icon: (
@@ -80,16 +81,15 @@ const contactInfo = [
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    label: "Çalışma Saatleri",
+    label: "Çalışma SAATLERİ",
     value: "Pazartesi – Cuma, 09:00 – 18:00",
-    href: "#",
   },
 ];
 
 const socials = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/bloomo_medya/",
+    href: "https://www.instagram.com/bloomo.medya/",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" />
@@ -102,8 +102,9 @@ const socials = [
     label: "WhatsApp",
     href: "https://wa.me/905452487221",
     icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.014 8.00613C6.12827 7.1024 7.30277 5.87414 8.23488 6.01043L8.23339 6.00894C9.14051 6.18132 9.85859 7.74261 10.2635 8.44465C10.5504 8.95402 10.3641 9.4701 10.0965 9.68787C9.7355 9.97883 9.17099 10.3803 9.28943 10.7834C9.5 11.5 12 14 13.2296 14.7107C13.695 14.9797 14.0325 14.2702 14.3207 13.9067C14.5301 13.6271 15.0466 13.46 15.5548 13.736C16.3138 14.178 17.0288 14.6917 17.69 15.27C18.0202 15.546 18.0977 15.9539 17.8689 16.385C17.4659 17.1443 16.3003 18.1456 15.4542 17.9421C13.9764 17.5868 8 15.27 6.08033 8.55801C5.97237 8.24048 5.99955 8.12044 6.014 8.00613Z" fill="currentColor" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M12 23C10.7764 23 10.0994 22.8687 9 22.5L6.89443 23.5528C5.56462 24.2177 4 23.2507 4 21.7639V19.5C1.84655 17.492 1 15.1767 1 12C1 5.92487 5.92487 1 12 1C18.0751 1 23 5.92487 23 12C23 18.0751 18.0751 23 12 23ZM6 18.6303L5.36395 18.0372C3.69087 16.4772 3 14.7331 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C11.0143 21 10.552 20.911 9.63595 20.6038L8.84847 20.3397L6 21.7639V18.6303Z" fill="currentColor" />
       </svg>
     ),
   },
@@ -111,6 +112,42 @@ const socials = [
 
 export default function IletisimPage() {
   const [showCallModal, setShowCallModal] = useState(false);
+  const [subject, setSubject] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const message = formData.get("message") as string;
+
+    const { error } = await supabase.from("form_submissions").insert({
+      type: "contact",
+      name,
+      email,
+      phone,
+      subject,
+      message,
+    });
+
+    setLoading(false);
+
+    if (error) {
+      alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+    } else {
+      setSuccess(true);
+      (e.target as HTMLFormElement).reset();
+      setSubject("");
+      
+      // 5 saniye sonra mesajı gizle
+      setTimeout(() => setSuccess(false), 5000);
+    }
+  };
 
   return (
     <main className="bg-white">
@@ -206,25 +243,40 @@ export default function IletisimPage() {
               </h2>
 
               <div className="mt-8 flex flex-col gap-4">
-                {contactInfo.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="group flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-5 transition-all hover:shadow-lg"
-                  >
-                    <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#E8F6FA] transition-colors group-hover:bg-[#0899BE]/20">
-                      {item.icon}
+                {contactInfo.map((item) => {
+                  const content = (
+                    <>
+                      <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#E8F6FA] transition-colors group-hover:bg-[#0899BE]/20">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                          {item.label}
+                        </p>
+                        <p className="mt-1 text-sm font-medium text-black">
+                          {item.value}
+                        </p>
+                      </div>
+                    </>
+                  );
+
+                  return item.href ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="group flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-5 transition-all hover:shadow-lg"
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <div
+                      key={item.label}
+                      className="group flex items-start gap-4 rounded-2xl border border-gray-200 bg-white p-5 transition-all hover:shadow-lg"
+                    >
+                      {content}
                     </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-sm font-medium text-black">
-                        {item.value}
-                      </p>
-                    </div>
-                  </a>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Social Media */}
@@ -260,7 +312,15 @@ export default function IletisimPage() {
                   Formu doldurun, en kısa sürede size dönüş yapalım.
                 </p>
 
-                <form className="mt-8">
+                {success && (
+                  <div className="mt-6 rounded-xl border border-green-200 bg-[#E8F6FA] p-5">
+                    <p className="text-sm font-semibold text-[#0899BE]">
+                      Mesajınız başarıyla gönderildi! En kısa sürede sizinle iletişime geçeceğiz.
+                    </p>
+                  </div>
+                )}
+
+                <form className="mt-8" onSubmit={handleSubmit}>
                   <div className="grid gap-5 sm:grid-cols-2">
                     {/* Ad Soyad */}
                     <div>
@@ -274,6 +334,7 @@ export default function IletisimPage() {
                         type="text"
                         id="contact-name"
                         name="name"
+                        required
                         placeholder="Adınız Soyadınız"
                         className="w-full rounded-xl border border-gray-200 bg-[#F9FAFB] px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-[#0899BE] focus:ring-2 focus:ring-[#0899BE]/20"
                       />
@@ -308,6 +369,7 @@ export default function IletisimPage() {
                         type="tel"
                         id="contact-phone"
                         name="phone"
+                        required
                         placeholder="+90 (5XX) XXX XX XX"
                         className="w-full rounded-xl border border-gray-200 bg-[#F9FAFB] px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-[#0899BE] focus:ring-2 focus:ring-[#0899BE]/20"
                       />
@@ -321,22 +383,21 @@ export default function IletisimPage() {
                       >
                         Konu
                       </label>
-                      <select
+                      <CustomDropdown
                         id="contact-subject"
                         name="subject"
-                        className="w-full rounded-xl border border-gray-200 bg-[#F9FAFB] px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-[#0899BE] focus:ring-2 focus:ring-[#0899BE]/20"
-                        defaultValue=""
-                      >
-                        <option value="" disabled>
-                          Konu seçiniz
-                        </option>
-                        <option value="web-tasarim">Web Tasarım</option>
-                        <option value="dijital-pazarlama">Dijital Pazarlama</option>
-                        <option value="seo">SEO Danışmanlığı</option>
-                        <option value="sosyal-medya">Sosyal Medya Yönetimi</option>
-                        <option value="google-ads">Google Ads</option>
-                        <option value="diger">Diğer</option>
-                      </select>
+                        value={subject}
+                        onChange={setSubject}
+                        placeholder="Konu seçiniz"
+                        options={[
+                          { value: "web-tasarim", label: "Web Tasarım" },
+                          { value: "dijital-pazarlama", label: "Dijital Pazarlama" },
+                          { value: "seo", label: "SEO Danışmanlığı" },
+                          { value: "sosyal-medya", label: "Sosyal Medya Yönetimi" },
+                          { value: "google-ads", label: "Google Ads" },
+                          { value: "diger", label: "Diğer" },
+                        ]}
+                      />
                     </div>
                   </div>
 
@@ -352,6 +413,7 @@ export default function IletisimPage() {
                       id="contact-message"
                       name="message"
                       rows={5}
+                      required
                       placeholder="Projeniz hakkında kısa bilgi verin..."
                       className="w-full resize-none rounded-xl border border-gray-200 bg-[#F9FAFB] px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-[#0899BE] focus:ring-2 focus:ring-[#0899BE]/20"
                     />
@@ -360,22 +422,25 @@ export default function IletisimPage() {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-black px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gray-800"
+                    disabled={loading}
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-black px-8 py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gray-800 disabled:opacity-70"
                     style={{ fontFamily: "var(--font-syne)" }}
                   >
-                    Mesaj Gönder
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                    {loading ? "Gönderiliyor..." : "Mesaj Gönder"}
+                    {!loading && (
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    )}
                   </button>
                 </form>
               </div>

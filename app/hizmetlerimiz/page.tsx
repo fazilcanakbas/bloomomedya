@@ -316,7 +316,7 @@ export default function HizmetlerimizPage() {
                 ekibimiz size hedefe göre optimize edilmiş bir plan sunsun.
               </p>
               <Link
-                href="/fiyatlandirma"
+                href="/iletisim"
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#0899BE] px-8 py-4 text-sm font-semibold tracking-wider text-white transition-all hover:bg-[#077a9a]"
                 style={{ fontFamily: "var(--font-syne)" }}
               >

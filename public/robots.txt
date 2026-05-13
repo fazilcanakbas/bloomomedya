@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Admin ve gizli sayfaları indekslemiyoruz
+Disallow: /admin/
+Disallow: /admin/*
+
+Sitemap: https://bloomomedya.com/sitemap.xml

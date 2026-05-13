@@ -4,15 +4,15 @@ import Link from "next/link";
 import References from "@/components/References";
 
 const brandLogos = [
-  { src: "/havacilar-logo.png", alt: "Havacilar", invert: true },
-  { src: "/efour.png", alt: "Efour" },
-  { src: "/lullykids.png", alt: "Lullykids" },
-  { src: "/daimatour.png", alt: "Daimatour" },
-  { src: "/peynir-2.png", alt: "Peynir" },
-  { src: "/sinyal.png", alt: "Sinyal" },
-  { src: "/Basel-2.png", alt: "Basel" },
-  { src: "/blackmoon-2.png", alt: "Blackmoon" },
-  { src: "/calli-2.png", alt: "Call" },
+  { src: "/havacilar-logo.png", alt: "Havacilar", invert: true, customClass: "w-[180px] sm:w-[190px]" },
+  { src: "/efour.png", alt: "Efour", customClass: "w-[90px] sm:w-[170px]" },
+  { src: "/lullykids.png", alt: "Lullykids", customClass: "w-[110px] sm:w-[130px]" },
+  { src: "/daimatour.png", alt: "Daimatour", customClass: "w-[140px] sm:w-[170px]" },
+  { src: "/peynir-2.png", alt: "Peynir", customClass: "w-[100px] sm:w-[100px]" },
+  { src: "/sinyal.png", alt: "Sinyal", customClass: "w-[80px] sm:w-[185px] scale-150" },
+  { src: "/Basel-2.png", alt: "Basel", customClass: "w-[125px] sm:w-[145px]" },
+  { src: "/blackmoon-2.png", alt: "Blackmoon", customClass: "w-[115px] sm:w-[135px]" },
+  { src: "/calli-2.png", alt: "Call", customClass: "w-[105px] sm:w-[125px]" },
 ];
 
 export const metadata: Metadata = {
@@ -99,11 +99,11 @@ export default function ReferanslarPage() {
                   key={`${logo.src}-${index}`}
                   src={logo.src}
                   alt={logo.alt}
-                  width={140}
-                  height={44}
-                  className={`h-auto w-[110px] shrink-0 object-contain sm:w-[130px] ${
-                    logo.invert ? "invert" : ""
-                  }`}
+                  width={200}
+                  height={80}
+                  className={`h-auto shrink-0 object-contain ${
+                    logo.customClass || "w-[110px] sm:w-[130px]"
+                  } ${logo.invert ? "invert" : ""}`}
                 />
               ))}
             </div>

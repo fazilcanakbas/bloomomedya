@@ -21,7 +21,7 @@ export default function Hero() {
           biz oradan başlıyoruz.
         </h1>
         <p className="mt-6 max-w-2xl text-base text-black sm:text-lg">
-         İşletmenizi anlayarak ihtiyaçlarınıza uygun, yaratıcı ve stratejik dijital çözümler geliştiriyoruz.
+          İşletmenizi anlayarak ihtiyaçlarınıza uygun, yaratıcı ve stratejik dijital çözümler geliştiriyoruz.
         </p>
 
         {/* Brand logos */}
@@ -58,9 +58,9 @@ export default function Hero() {
             <Image
               src="/peynir.png"
               alt="Peynir"
-              width={140}
-              height={44}
-              className="h-auto w-[110px] object-contain sm:w-[130px]"
+              width={220}
+              height={84}
+              className="h-auto w-[160px] object-contain sm:w-[180px] scale-170  ml-[-30]"
             />
           </div>
         </div>

@@ -1,5 +1,7 @@
 "use client";
 import { useState } from "react";
+import CustomDropdown from "@/components/CustomDropdown";
+import { supabase } from "@/lib/supabase";
 
 interface SiziArayalimModalProps {
   open: boolean;
@@ -14,10 +16,29 @@ export default function SiziArayalimModal({ open, onClose }: SiziArayalimModalPr
   const [infoArea, setInfoArea] = useState("");
   const [note, setNote] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+
+    const { error } = await supabase.from("form_submissions").insert({
+      type: "sizi_arayalim",
+      name,
+      phone,
+      email,
+      company,
+      info_area: infoArea,
+      note,
+    });
+
+    setLoading(false);
+
+    if (error) {
+      alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+    } else {
+      setSubmitted(true);
+    }
   };
 
   const handleClose = () => {
@@ -154,21 +175,22 @@ export default function SiziArayalimModal({ open, onClose }: SiziArayalimModalPr
                 <label htmlFor="call-area" className="mb-2 block text-sm font-medium text-gray-700">
                   Bilgi Almak İstediğiniz Alan
                 </label>
-                <select
+                <CustomDropdown
                   id="call-area"
+                  name="area"
                   value={infoArea}
-                  onChange={(e) => setInfoArea(e.target.value)}
-                  className="w-full rounded-xl border border-gray-200 bg-[#F9FAFB] px-4 py-3 text-sm text-gray-900 outline-none transition-all focus:border-[#0899BE] focus:ring-2 focus:ring-[#0899BE]/20"
-                >
-                  <option value="" disabled>Alan seçiniz</option>
-                  <option value="web-tasarim">Web Tasarım</option>
-                  <option value="dijital-pazarlama">Dijital Pazarlama</option>
-                  <option value="seo">SEO Danışmanlığı</option>
-                  <option value="sosyal-medya">Sosyal Medya Yönetimi</option>
-                  <option value="google-ads">Google Ads</option>
-                  <option value="yazilim">Yazılım Geliştirme</option>
-                  <option value="diger">Diğer</option>
-                </select>
+                  onChange={setInfoArea}
+                  placeholder="Alan seçiniz"
+                  options={[
+                    { value: "web-tasarim", label: "Web Tasarım" },
+                    { value: "dijital-pazarlama", label: "Dijital Pazarlama" },
+                    { value: "seo", label: "SEO Danışmanlığı" },
+                    { value: "sosyal-medya", label: "Sosyal Medya Yönetimi" },
+                    { value: "google-ads", label: "Google Ads" },
+                    { value: "yazilim", label: "Yazılım Geliştirme" },
+                    { value: "diger", label: "Diğer" },
+                  ]}
+                />
               </div>
 
               <div>
@@ -187,22 +209,25 @@ export default function SiziArayalimModal({ open, onClose }: SiziArayalimModalPr
 
               <button
                 type="submit"
-                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-black py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gray-800"
+                disabled={loading}
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-black py-3.5 text-sm font-semibold uppercase tracking-wider text-white transition-all hover:bg-gray-800 disabled:opacity-70"
                 style={{ fontFamily: "var(--font-syne)" }}
               >
-                Arama Talebi Gönder
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                {loading ? "Gönderiliyor..." : "Arama Talebi Gönder"}
+                {!loading && (
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                )}
               </button>
             </form>
           )}

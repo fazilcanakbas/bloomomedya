@@ -420,7 +420,7 @@ export default async function HizmetDetayPage({ params }: PageProps) {
 
               <div className="flex flex-col gap-4 sm:flex-row lg:flex-col lg:items-end">
                 <Link
-                  href="/fiyatlandirma"
+                  href="/iletiism"
                   className="inline-flex items-center gap-2 rounded-full bg-[#0899BE] px-6 py-3 text-sm font-semibold tracking-wider text-white transition-colors hover:bg-[#077a9a]"
                   style={{ fontFamily: "var(--font-syne)" }}
                 >
