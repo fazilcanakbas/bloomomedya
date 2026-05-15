@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 // import HeaderTop from "@/components/HeaderTop";
 // import Header from "@/components/Header";
+import { Analytics } from "@vercel/analytics/next"
 import HeaderNew from "@/components/HeaderNew";
 import Footer from "@/components/Footer";
 
@@ -109,6 +110,7 @@ export default function RootLayout({
         />
         {children}
         <Footer />
+        <Analytics/>
       </body>
     </html>
   );
