@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: "Bloomo Medya | Dijital Reklam, SEO & Web Tasarım Ajansı Antalya",
   description: "Antalya merkezli Bloomo Medya; Dijital Reklam, SEO, Web Tasarım, Sosyal Medya Yönetimi ve Video Prodüksiyon hizmetleri sunan veri odaklı dijital pazarlama ajansıdır.",
   metadataBase: new URL('https://bloomomedya.com'),
-  keywords: ["dijital ajans antalya", "reklam ajansı antalya", "web tasarım antalya", "seo uzmanı antalya", "sosyal medya yönetimi", "google ads danışmanlığı", "dijital pazarlama"],
+  keywords: ["dijital ajans antalya", "antalya dijital ajans", "reklam ajansı antalya", "web tasarım antalya", "antalya web sitesi yapımı", "seo uzmanı antalya", "sosyal medya yönetimi", "antalya sosyal medya ajansı", "google ads danışmanlığı", "antalya dijital pazarlama"],
   openGraph: {
     title: "Bloomo Medya | Dijital Büyüme Ortağınız",
     description: "Strateji, veri ve yaratıcılığı bir araya getirerek markanızı dijitalde büyütüyoruz.",
