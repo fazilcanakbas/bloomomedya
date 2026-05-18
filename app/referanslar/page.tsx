@@ -18,6 +18,9 @@ const brandLogos = [
 export const metadata: Metadata = {
   title: "Referanslar | Bloomo",
   description: "Bloomo'nun birlikte çalıştığı markalar ve öne çıkan referans işleri.",
+  alternates: {
+    canonical: "/referanslar",
+  },
 };
 
 export default function ReferanslarPage() {

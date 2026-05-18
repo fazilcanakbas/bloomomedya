@@ -4,6 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Projelerimiz | Bloomo",
   description: "Bloomo olarak hayata geçirdiğimiz projeler",
+  alternates: {
+    canonical: "/projeler",
+  },
 };
 
 export default function ProjelerPage() {

@@ -21,6 +21,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} | Bloomo Blog`,
     description: post.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
   };
 }
 

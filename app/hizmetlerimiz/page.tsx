@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "Hizmetlerimiz | Bloomo",
   description:
     "Bloomo'nun sunduğu dijital pazarlama, reklam, tasarım ve web hizmetlerini keşfedin.",
+  alternates: {
+    canonical: "/hizmetlerimiz",
+  },
 };
 
 const processSteps = [

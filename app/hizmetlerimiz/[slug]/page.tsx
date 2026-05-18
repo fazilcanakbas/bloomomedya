@@ -34,6 +34,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `${service.title} | Bloomo`,
     description: service.description,
+    alternates: {
+      canonical: `/hizmetlerimiz/${slug}`,
+    },
   };
 }
 

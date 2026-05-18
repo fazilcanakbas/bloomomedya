@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "Hakkımızda | Bloomo",
   description:
     "Bloomo dijital ajans olarak kim olduğumuzu ve ekibimizi tanıyın",
+  alternates: {
+    canonical: "/hakkimizda",
+  },
 };
 
 const values = [

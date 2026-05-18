@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Fiyatlandırma | Bloomo",
   description:
     "Bloomo hizmetlerini keşfedin ve size özel teklif alın.",
+  alternates: {
+    canonical: "/fiyatlandirma",
+  },
 };
 
 export default function FiyatlandirmaPage() {
